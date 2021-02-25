@@ -41,7 +41,7 @@
   </div>
 </div>
 
-<div class="chat_main_bottom">
+<%# <div class="chat_main_bottom">
   <div class="input_form">
     <input class="text_area" placeholder="type a message">
     <label class="form-image">
@@ -50,4 +50,15 @@
     </label>
   </div>
     <input class="send_btn" type="submit" value="送信">
-</div>
+</div> %>
+
+<%= form_with model: [@room, @message], class: 'chat_main_bottom', local: true do |f| %>
+  <div class="input_form">
+    <%= f.text_field :content, class: 'text_area', placeholder: "type a message" %>
+    <label class="form-image">
+      <span class="image-file">画像</span>
+      <%= f.file_field :image, class: 'hidden' %>
+    </label>
+  </div>
+  <%= f.submit '送信', class: 'send_btn' %>
+<% end %>
